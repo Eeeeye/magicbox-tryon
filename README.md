@@ -2,10 +2,6 @@
 
 用一张人物照和一张服装图生成上装、下装或连衣裙的试穿图。这是基于公开模型的个人工程复现。Java 21 服务负责上传校验、任务排队、重复提交处理和结果下载，Python 工作进程用 SegFormer 定位衣物，再用 CatVTON Mix 生成图像。
 
-![上装、下装和连衣裙的公开样例，展示输入与实际生成结果](evidence/comparison.jpg)
-
-图中三个样例在 Apple M5 上分别用时 41.6 秒、37.7 秒和 44.3 秒，输出分辨率均为 384 × 512，使用 25 步采样。耗时取自 Java 任务开始执行到保存结果之间的记录。可以查看每次的输入哈希、模型参数与下载文件校验值。[上装记录](evidence/acceptance.json) · [下装记录](evidence/lower/acceptance.json) · [连衣裙记录](evidence/dress/acceptance.json)
-
 ## 启动
 
 在 macOS 或 Linux 上准备 Git、JDK 21、Python 3.12 和 curl。Apple Silicon 使用已验证的完整 Python 依赖锁，Linux 使用固定版本的直接依赖。Python 路径可用 `PYTHON_BIN` 指定，JDK 路径可用 `JAVA_HOME` 指定。
@@ -95,8 +91,10 @@ TRYON_TEST_CATEGORY=dress EVIDENCE_DIR=evidence/dress node tests/browser-e2e.cjs
 
 浏览器验收从点击「开始试穿」到下载 PNG，并检查下载文件与 API 响应逐字节相同，刷新后仍能重新打开。针对三个固定样例，像素检查还核对服装区域的颜色变化，以及左侧 5% 背景与原图逐像素一致。[固定样例像素检查](evidence/visual-checks.json)
 
+在 Apple M5 上，以 384 × 512 分辨率、25 步采样各运行一次，上装用时 41.6 秒，下装 37.7 秒，连衣裙 44.3 秒。计时从 Java 开始执行任务到结果保存完成。[上装记录](evidence/acceptance.json) · [下装记录](evidence/lower/acceptance.json) · [连衣裙记录](evidence/dress/acceptance.json)
+
 在 Apple M5 上，较长的注意力序列按注意力头分片以控制峰值内存。576 × 768、25 步、guidance 3.5 的上装样例用时 93.18 秒。[高分辨率验收](evidence/high-resolution/acceptance.json)
 
-黑色长裤换白色短裙是一次可复查的视觉失败。任务正常生成 PNG，但输出仍保留了裤型。可在浏览器选下装样例，然后把人物替换为 `samples/person.jpg` 重现这个输入组合。印花位置、袖口和下摆也会随模型生成发生变化。[困难样例结果](evidence/difficult-lower/tryon-result.png)
+黑色长裤换白色短裙是一次可复查的视觉失败。任务正常生成 PNG，但输出仍保留了裤型。可在浏览器选下装样例，然后把人物替换为 `samples/person.jpg` 重现这个输入组合。印花位置、袖口和下摆也会随模型生成发生变化。[困难样例验收记录](evidence/difficult-lower/acceptance.json)
 
 模型和样例的使用须遵循各自来源的许可。CatVTON 作者将模型以 CC BY-NC-SA 4.0 发布。上装、连衣裙及其人物样例来自 CatVTON 公开演示，短裙及其配套人物照来自 FASHN 的公开演示。[CatVTON 模型许可](https://huggingface.co/zhengchong/CatVTON#license) · [CatVTON 演示](https://huggingface.co/spaces/zhengchong/CatVTON) · [下装样例来源](https://huggingface.co/spaces/fashn-ai/fashn-vton-1.5/blob/c433f1268bfa86502f6582ab03494d3e4d7aa8bf/app.py)
