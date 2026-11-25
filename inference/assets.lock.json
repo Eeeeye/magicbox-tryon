@@ -1,0 +1,128 @@
+[
+  {
+    "destination": "models/base/scheduler/scheduler_config.json",
+    "repo": "stable-diffusion-v1-5/stable-diffusion-inpainting",
+    "revision": "8a4288a76071f7280aedbdb3253bdb9e9d5d84bb",
+    "space": false,
+    "source": "scheduler/scheduler_config.json",
+    "bytes": 313,
+    "gitBlob": "3a6a9a51b8ea8eb2b0c55e2811e608f2eca3ffd2"
+  },
+  {
+    "destination": "models/base/unet/config.json",
+    "repo": "stable-diffusion-v1-5/stable-diffusion-inpainting",
+    "revision": "8a4288a76071f7280aedbdb3253bdb9e9d5d84bb",
+    "space": false,
+    "source": "unet/config.json",
+    "bytes": 748,
+    "gitBlob": "432f2ef043de459ffb66e7e49d22131fc596a5d5"
+  },
+  {
+    "destination": "models/base/unet/diffusion_pytorch_model.fp16.safetensors",
+    "repo": "stable-diffusion-v1-5/stable-diffusion-inpainting",
+    "revision": "8a4288a76071f7280aedbdb3253bdb9e9d5d84bb",
+    "space": false,
+    "source": "unet/diffusion_pytorch_model.fp16.safetensors",
+    "bytes": 1719154104,
+    "sha256": "24b788b4a777748377cc20364eea4ae113c8c42f4468c16bc8c02fdae5492af9"
+  },
+  {
+    "destination": "models/vae/config.json",
+    "repo": "stabilityai/sd-vae-ft-mse",
+    "revision": "31f26fdeee1355a5c34592e401dd41e45d25a493",
+    "space": false,
+    "source": "config.json",
+    "bytes": 547,
+    "gitBlob": "0db26717579be63eb0ddbf15b43faa43700dfe5a"
+  },
+  {
+    "destination": "models/vae/diffusion_pytorch_model.safetensors",
+    "repo": "stabilityai/sd-vae-ft-mse",
+    "revision": "31f26fdeee1355a5c34592e401dd41e45d25a493",
+    "space": false,
+    "source": "diffusion_pytorch_model.safetensors",
+    "bytes": 334643276,
+    "sha256": "a1d993488569e928462932c8c38a0760b874d166399b14414135bd9c42df5815"
+  },
+  {
+    "destination": "models/attention/mix-48k-1024/attention/model.safetensors",
+    "repo": "zhengchong/CatVTON",
+    "revision": "2969fcf85fe62f2036605716f0b56f0b81d01d79",
+    "space": false,
+    "source": "mix-48k-1024/attention/model.safetensors",
+    "bytes": 198303368,
+    "sha256": "a1fc093f1b6744623079e6f4e7313411f524e388c4b7467df1e0e7f577cba23a"
+  },
+  {
+    "destination": "models/parser/config.json",
+    "repo": "mattmdjaga/segformer_b2_clothes",
+    "revision": "584abc1e1d260e23c0fc627c5217a09b2b461046",
+    "space": false,
+    "source": "config.json",
+    "bytes": 1727,
+    "gitBlob": "7bf506a3672235c681b35e124ef9333ca6f5e8b2"
+  },
+  {
+    "destination": "models/parser/model.safetensors",
+    "repo": "mattmdjaga/segformer_b2_clothes",
+    "revision": "584abc1e1d260e23c0fc627c5217a09b2b461046",
+    "space": false,
+    "source": "model.safetensors",
+    "bytes": 109493236,
+    "sha256": "8f86fd90c567afd4370b3cc3a7e81ed767a632b2832a738331af660acc0c4c68"
+  },
+  {
+    "destination": "models/parser/preprocessor_config.json",
+    "repo": "mattmdjaga/segformer_b2_clothes",
+    "revision": "584abc1e1d260e23c0fc627c5217a09b2b461046",
+    "space": false,
+    "source": "preprocessor_config.json",
+    "bytes": 271,
+    "gitBlob": "d230721d08201d422c6e3d11994083b55e7e66ca"
+  },
+  {
+    "destination": "samples/garment.jpg",
+    "repo": "zhengchong/CatVTON",
+    "revision": "24a6952918a8c6168b89ae32ad61e7e447e3987b",
+    "space": true,
+    "source": "resource/demo/example/condition/upper/22790049_53294275_1000.jpg",
+    "bytes": 134449,
+    "sha256": "2e8990f31c56829e2dd1460dd905c619ab1dd2b889b6be28770670f84d32541a"
+  },
+  {
+    "destination": "samples/person.jpg",
+    "repo": "zhengchong/CatVTON",
+    "revision": "24a6952918a8c6168b89ae32ad61e7e447e3987b",
+    "space": true,
+    "source": "resource/demo/example/person/women/049713_0.jpg",
+    "bytes": 114118,
+    "sha256": "1f0cd62f675f27b290cbe518a1531b23246bc065bd11f9858f9c4e7d4f7b1717"
+  },
+  {
+    "destination": "samples/dress.jpg",
+    "repo": "zhengchong/CatVTON",
+    "revision": "24a6952918a8c6168b89ae32ad61e7e447e3987b",
+    "space": true,
+    "source": "resource/demo/example/condition/overall/21744571_51588794_1000.jpg",
+    "bytes": 172852,
+    "sha256": "735397cb34a0c9c941739633951f10a6dde23a6005b2a4928f7fe50a884feeea"
+  },
+  {
+    "destination": "samples/lower.jpg",
+    "repo": "fashn-ai/fashn-vton-1.5",
+    "revision": "c433f1268bfa86502f6582ab03494d3e4d7aa8bf",
+    "space": true,
+    "source": "assets/examples/garment5.jpeg",
+    "bytes": 175185,
+    "sha256": "fd6eea00b8145961338a3e43845cfb63bdba3a4dc1653edc5eba14bcd8148a35"
+  },
+  {
+    "destination": "samples/person-lower.png",
+    "repo": "fashn-ai/fashn-vton-1.5",
+    "revision": "c433f1268bfa86502f6582ab03494d3e4d7aa8bf",
+    "space": true,
+    "source": "assets/examples/person5.png",
+    "bytes": 1182414,
+    "sha256": "d4b58b27a752a07600f477faf187263bca846e855761c41079d546dc646ab2d7"
+  }
+]

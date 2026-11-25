@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="在本机运行 CatVTON 虚拟试衣"><title>本地虚拟试衣 · CatVTON</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body><main class="shell">
+<header class="topbar"><div class="brand"><div class="brand-mark" aria-hidden="true">CV</div><div class="brand-name">虚拟试衣间</div></div>
+  <div class="top-actions"><div class="service-chip"><span class="service-dot off" id="serviceDot"></span><span id="serviceText" aria-live="polite">正在连接</span></div>
+  <button class="icon-btn" id="themeToggle" type="button" aria-label="切换主题">◐</button></div>
+</header>
+<section class="hero"><div><h1>试穿一件新衣服</h1><p>选一张正面人物照，再选一张单件服装图，即可在本机生成试穿效果。</p></div></section>
+<section class="layout">
+  <div class="card"><div class="card-head"><div><h2>试穿素材</h2><p class="card-intro">人物衣着清晰、服装平铺时效果更好。</p></div>
+  <button id="loadSamples" class="task-tool" type="button">使用公开样例</button></div>
+  <form id="form" novalidate>
+    <div class="uploads">
+      <label class="dropzone" data-role="person"><input name="person" type="file" accept="image/png,image/jpeg" required>
+        <img class="preview" alt="人物原图"><strong>人物照片</strong><small>点击选择或拖入图片</small><span class="file-name">PNG / JPEG · 最大 5 MiB</span></label>
+      <label class="dropzone" data-role="garment"><input name="garment" type="file" accept="image/png,image/jpeg" required>
+        <img class="preview" alt="服装原图"><strong>服装图片</strong><small>点击选择或拖入图片</small><span class="file-name">PNG / JPEG · 最大 5 MiB</span></label>
+    </div>
+    <label class="category-field" for="category">试穿部位
+      <select id="category"><option value="upper">上装</option><option value="lower">下装</option><option value="dress">连衣裙</option></select>
+    </label>
+    <div class="input-summary" id="inputSummary" aria-live="polite" hidden><div><strong id="inputSummaryTitle">图片尺寸</strong><span id="inputSummaryValue"></span></div><small id="inputSummaryNote"></small></div>
+    <div class="actions"><button class="primary" id="submit" type="submit" disabled>开始试穿</button><button class="secondary" id="reset" type="button">清空</button></div>
+  </form></div>
+  <aside class="card status-card"><div class="card-head"><div><h2 id="statusHeading" tabindex="-1">试穿结果</h2><p class="card-intro">生成后可预览和下载 PNG。</p></div></div>
+<div class="status-empty" id="empty"><div><div class="empty-icon">◌</div><div>还没有任务</div><small>创建任务后，状态会显示在这里</small></div></div><div class="status-view" id="statusView"><p id="snapshotNotice" class="snapshot-notice" hidden></p><div class="status-head"><div><div class="status-title">换装任务</div><div class="task-id" id="taskId"></div></div><span class="badge queued" id="badge" aria-live="polite">QUEUED</span></div><figure id="outputFigure" class="output-figure" hidden>
+          <img id="outputImage" alt="人物穿上所选服装后的生成结果">
+          <figcaption><a class="primary" id="downloadResult" download>下载 PNG</a></figcaption>
+        </figure><div class="steps"><div class="step" data-step="QUEUED">已接收请求</div><div class="step" data-step="RUNNING">调用推理服务</div><div class="step" data-step="SUCCEEDED">完成任务</div></div><div class="timeline" id="timeline" aria-label="服务端请求时间线">
+<div class="timeline-item" data-stage="queued"><span class="timeline-dot"></span><div><strong>已接收请求</strong><time id="queuedAt">未记录</time></div></div>
+<div class="timeline-item" data-stage="running"><span class="timeline-dot"></span><div><strong>开始推理</strong><time id="runningAt">未记录</time></div></div>
+<div class="timeline-item" data-stage="completed"><span class="timeline-dot"></span><div><strong id="completedLabel">完成任务</strong><time id="completedAt">未记录</time></div></div>
+</div><div class="detail-grid"><div class="detail"><label>人物尺寸</label><span class="detail-value" id="personMeta">-</span></div><div class="detail"><label>服装尺寸</label><span class="detail-value" id="garmentMeta">-</span></div><div class="detail"><label>运行耗时</label><span class="detail-value" id="durationMeta">-</span></div><div class="detail"><label>运行模式</label><span class="detail-value" id="modeMeta">—</span></div></div><div class="task-dates"><div><span>创建时间</span><time id="createdMeta">—</time></div><div><span>最后更新</span><time id="updatedMeta">—</time></div></div><div class="task-tools" aria-label="任务摘要工具"><button class="task-tool" id="copySummary" type="button" disabled>复制摘要</button><button class="task-tool" id="downloadSummary" type="button" disabled>导出 JSON</button></div><div class="result-note" id="resultNote" aria-live="polite">等待任务开始。</div></div></aside></section>
+<section class="history-section"><div class="card history-card"><div class="card-head"><div><h2>最近任务</h2><p class="card-intro">本浏览器的最近 8 条记录，点击可查看结果</p></div><span class="history-total" id="historyTotal">0 次尝试</span></div>
+<div class="history-toolbar"><div class="history-filters" role="group" aria-label="按记录状态筛选">
+<button type="button" data-filter="ALL" aria-pressed="true">全部 <span>0</span></button>
+<button type="button" data-filter="ACTIVE" aria-pressed="false">进行中 <span>0</span></button>
+<button type="button" data-filter="SUCCEEDED" aria-pressed="false">已完成 <span>0</span></button>
+<button type="button" data-filter="FAILED" aria-pressed="false">未完成 <span>0</span></button>
+</div><span class="history-caption" id="historySummary" role="status"></span></div>
+<div class="history-list" id="historyList"></div><div class="history-actions"><span class="history-caption">记录状态以最后一次查询为准</span><button id="clearHistory" type="button">清空历史</button></div></div></section>
+<section class="service-overview" aria-labelledby="overviewHeading">
+  <div class="overview-head">
+    <div><h2 id="overviewHeading">服务负载</h2><p>本地 Java 服务 · 页面可见时每 15 秒读取</p></div>
+    <button class="task-tool" id="refreshService" type="button">刷新读数 <span aria-hidden="true">↻</span></button>
+  </div>
+  <div class="metrics" id="serviceMetrics">
+    <div class="metric"><span>排队等候</span><strong id="queueDepthValue">—</strong><small>等待处理的请求</small></div>
+    <div class="metric"><span>正在处理</span><strong id="workerValue">—</strong><small>占用推理工作线程</small></div>
+    <div class="metric"><span>图片任务总数</span><strong id="taskCountValue">—</strong><small>已保存的任务</small></div>
+    <div class="metric telemetry-metric"><div class="telemetry-line"><span>队列读数</span><small id="queuePeak">等待采样</small></div><div class="sparkline" id="queueTrend" role="img" aria-label="尚无队列读数"></div><small>本页最近 8 次 · 从左到右</small></div>
+  </div>
+  <p class="overview-note" id="queueSummary" role="status">正在读取运行状态…</p>
+</section>
+
+</main><div class="toast" id="toast" role="status"></div>
+<script src="/ui-state.js" defer></script><script src="/app.js" defer></script>
+</body></html>

@@ -1,0 +1,38 @@
+{
+  "upper": {
+    "taskId": "7ab5a489-c79e-42a6-bd06-5112959558d6",
+    "normalized_roi": [
+      0.39,
+      0.22,
+      0.58,
+      0.37
+    ],
+    "background_left_5_percent_pixel_identical": true,
+    "changed_fraction": 0.9906,
+    "red_minus_blue_increase": 46.9621
+  },
+  "lower": {
+    "taskId": "063fd07e-a25e-49c2-9bde-d043df4e707a",
+    "normalized_roi": [
+      0.43,
+      0.52,
+      0.56,
+      0.62
+    ],
+    "background_left_5_percent_pixel_identical": true,
+    "changed_fraction": 1.0,
+    "mean_rgb_brightness_increase": 169.2911
+  },
+  "dress": {
+    "taskId": "940b8919-1503-4d55-a8d9-9dc4760238ea",
+    "normalized_roi": [
+      0.39,
+      0.23,
+      0.58,
+      0.5
+    ],
+    "background_left_5_percent_pixel_identical": true,
+    "changed_fraction": 0.9884,
+    "red_pixel_fraction_increase": 0.191
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "verifiedAt": "2026-11-25T14:03:22.922Z",
+  "inputs": "pinned public demo samples in inference/assets.lock.json",
+  "model": {
+    "status": "READY",
+    "model": "CatVTON-Mix",
+    "device": "mps",
+    "width": 384,
+    "height": 512,
+    "steps": 25,
+    "seed": 42,
+    "guidance": 2.5
+  },
+  "task": {
+    "taskId": "940b8919-1503-4d55-a8d9-9dc4760238ea",
+    "status": "SUCCEEDED",
+    "mode": "catvton",
+    "category": "dress",
+    "error": "",
+    "result": "/api/tryon/tasks/940b8919-1503-4d55-a8d9-9dc4760238ea/result",
+    "durationMs": 44294,
+    "createdAt": "2026-11-25T14:02:37.405118Z",
+    "updatedAt": "2026-11-25T14:03:21.707028Z",
+    "timeline": {
+      "queuedAt": "2026-11-25T14:02:37.405118Z",
+      "runningAt": "2026-11-25T14:02:37.412256Z",
+      "completedAt": "2026-11-25T14:03:21.707028Z"
+    },
+    "inputs": {
+      "person": {
+        "mimeType": "image/jpeg",
+        "bytes": 114118,
+        "width": 768,
+        "height": 1024,
+        "sha256": "1f0cd62f675f27b290cbe518a1531b23246bc065bd11f9858f9c4e7d4f7b1717"
+      },
+      "garment": {
+        "mimeType": "image/jpeg",
+        "bytes": 172852,
+        "width": 1000,
+        "height": 1334,
+        "sha256": "735397cb34a0c9c941739633951f10a6dde23a6005b2a4928f7fe50a884feeea"
+      }
+    }
+  },
+  "downloaded": {
+    "filename": "tryon-940b8919-1503-4d55-a8d9-9dc4760238ea.png",
+    "bytes": 168748,
+    "sha256": "eb2e631d09454da388e4a9f2dc248941345d5c42601cd15c0faada3c6895fa3f",
+    "dimensions": [
+      384,
+      512
+    ]
+  },
+  "browser": {
+    "engine": "Chromium",
+    "version": "158.0.8127.37",
+    "checks": [
+      "upload two sample files",
+      "submit",
+      "poll to SUCCEEDED",
+      "render result",
+      "download PNG byte-equal to API",
+      "reload and reopen history"
+    ]
+  }
+}
